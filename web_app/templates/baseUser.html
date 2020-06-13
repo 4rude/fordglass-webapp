@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		{% block head %}
+		<title>{% block title %}{% endblock %} - Ford Glass</title>
+		<!-- Bulma CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css')}}">
+		<!-- Font Awesome 5 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+		<!-- Bulma-Social -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+		<!-- Custom CSS Code -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Navigation bar code -->
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+				<!-- Icon here -->
+				<a class="navbar-item" href="/">
+			      <img src="" width="" height="">
+			  </a>
+
+				<h1 class="navbar-item title">Ford Glass</h1>
+			</div>
+			<div class="navbar-menu">
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<!-- Instagram Logo & Link -->
+						<a class="button is-normal is-instagram" href="https://www.instagram.com/ford.glass/">
+					    <span class="icon">
+					      <i class="fab fa-instagram fa-lg"></i>
+					    </span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		{% endblock %}
+	</head>
+
+	<body> 
+		<!-- Main content -->
+		<div id="content">{% block content %}{% endblock %}</div>
+		<!-- Footer Code -->
+		<footer class="footer">
+			{% block footer %}
+		  <div class="columns is-multiline is-mobile">
+		  	<div class="column is-half">
+		    	<div class="content has-text-centered">
+		    		<p>Ford Glass is a company by Henrik F Jorgensen.</p>
+		    	</div>
+		  	</div>
+		  	<div class="column is-half">
+		    	<div class="has-text-centered">
+		    		<h1>Social Media</h1>
+		    		<!-- Instagram Logo & Link -->
+						<a class="button is-normal is-instagram" href="https://www.instagram.com/ford.glass/">
+					    <span class="icon">
+					      <i class="fab fa-instagram fa-lg"></i>
+					    </span>
+						</a>
+		    	</div>
+		  	</div>
+		  </div>
+		  {% endblock %}
+		</footer>
+	</body>
+</html>

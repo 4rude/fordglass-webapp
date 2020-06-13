@@ -1,0 +1,32 @@
+{% extends 'baseAdmin.html' %}
+
+{% block header %}
+	<div class="content">
+		<h1>{% block title %}Create new item{% endblock %}</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<form method="post" enctype="multipart/form-data">
+		<label for="item_name">Item Name</label>
+		<input type="text" id="item_name" name="item_name">
+		<hr>
+		<label for="description">Description</label>
+		<textarea name="description" id="description"> </textarea> 
+		<hr>
+		<label for="category_id">Category</label>
+		<select name="category_id" id="category_id">
+			{% for category in categories %}
+			<option value="{{ category['id'] }}">Category: {{ category['category'] }}, Subcategory: {{ category['sub_category'] }}</option>
+			{% endfor %}
+		</select>
+		<hr>
+		<label for="picture_url">Picture name + extension (.filetype)</label>
+		<input type="text" id="picture_url" name="picture_url">
+		<hr>
+		<label for="picture">Upload the picture here</label>
+		<input type="file" name="picture" id="picture">
+		<hr>
+		<input type="submit" name="Save">
+	</form>
+{% endblock %}

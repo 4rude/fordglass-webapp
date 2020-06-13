@@ -1,0 +1,37 @@
+Activating the virtual env: 
+$ . venv/bin/activate
+
+Starting the app:
+$ export FLASK_APP=web_app
+$ export FLASK_ENV=development
+$ flask run
+
+Initializing the database:
+$ flask init-db
+
+
+
+$ . venv/bin/activate
+
+$ export FLASK_APP=web_app
+$ export FLASK_ENV=development
+$ flask run
+
+
+$ flask init-db
+
+Setting up flask-mail:
+
+    1. The server is "smtp.gmail.com".
+    2. The port must match the type of security used.
+        If using STARTTLS with MAIL_USE_TLS = True, then use MAIL_PORT = 587.
+        If using SSL/TLS directly with MAIL_USE_SSL = True, then use MAIL_PORT = 465.
+        Enable either STARTTLS or SSL/TLS, not both.
+
+    Depending on your Google account's security settings, you may need to generate and use an app password rather than the account password. This may also require enabling 2-step verification. You should probably set this up anyway.
+
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'username@gmail.com'
+MAIL_PASSWORD = 'app password generated in step 3'

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<title>{% block title %}{% endblock %} - Ford Glass</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css')}}">
+<!-- Font Awesome 5 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<!-- Bulma-Social -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+<!-- Custom CSS code -->
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<nav class="navbar">
+	<h1>Ford Glass</h1>
+	<div class="navbar-end">
+		{% if g.user %}
+			<span class="navbar-item">{{ g.user['username'] }} </span>
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button" href=" {{ url_for('auth.logout')}} ">Log Out</a>
+				</div>
+			</div>
+		{% else %}
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button" href=" {{ url_for('auth.register')}} ">Register</a>
+					<a class="button" href=" {{ url_for('auth.login')}} ">Log In</a>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</nav>
+<section>
+	<header>
+		{% block header %}{% endblock %}
+	</header>
+	{% for message in get_flashed_messages() %}
+		<div class="flash">{{ message }}</div>
+	{% endfor %}
+	{% block content %}{% endblock %}
+</section>

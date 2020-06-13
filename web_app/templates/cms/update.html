@@ -1,0 +1,33 @@
+{% extends 'baseAdmin.html' %}
+
+{% block header %}
+	<div class="content">
+		<h1>{% block title %}Edit "{{ item['item_name'] }}"{% endblock %}</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<form method="post">
+		<label for="item_name">Item Name</label>
+		<input type="text" id="item_name" name="item_name" value="{{ request.form['item_name'] or item['item_name'] }}">
+		<br>
+		<label for="description">Description</label>
+		<textarea name="description" id="description" value="{{ request.form['description'] or item['description'] }}"></textarea> 
+		<br>
+		<label for="category_id">Category</label>
+		<select name="category_id" id="category_id">
+			{% for category in categories %}
+			<option value="{{ category['id'] }}">Category: {{ category['category'] }}, Subcategory: {{ category['sub_category'] }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<label for="picture_url">Picture name + extension (.filetype)</label>
+		<input type="text" id="picture_url" name="picture_url" value="{{ request.form['picture_url'] or item['picture_url'] }}">
+		<br>
+		<input type="submit" name="Save">
+	</form>
+	<hr>
+	<form action="{{ url_for('cms.delete', argId=item['id']) }}" method="post">
+		<input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+	</form>
+{% endblock %}

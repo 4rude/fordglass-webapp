@@ -1,0 +1,169 @@
+{% extends 'baseUser.html' %}
+
+{% block header %}
+	<h1>{% block title %}Welcome{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+	<!-- Picture gallery -->
+	<div class="columns is-multiline is-desktop">
+		<div class="column is-full is-centered has-text-centered">
+			<h1>Gallery</h1>
+		</div>
+
+	{% for item in items %}
+		{% if item['category'] == 'gallery' %}
+			<div class="column is-one-third">
+				<header>
+					<div>
+						<h1>{{ item['item_name'] }}</h1>
+						<p>Category: {{ item['category'] }} Sub-category: {{ item['sub_category'] }} </p>
+					</div>
+				</header>
+				<figure class="image is-square">
+					<img src="/static/images/{{ item['picture_url'] }}">
+				</figure>
+				<div>
+					<p>{{ item['description'] }}</p>
+					<p>Posted: {{ item['created'].strftime('%Y-%m-%d') }}</p>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+
+	</div>
+
+	<div class="columns is-multiline is-desktop">
+		<div class="column is-full is-centered has-text-centered">
+			<h1>Jewelry</h1>
+		</div>
+
+	{% for item in items %}
+		{% if item['category'] == 'jewelry' %}
+			<div class="column is-one-third">
+				<header>
+					<div>
+						<h1>{{ item['item_name'] }}</h1>
+						<p>Category: {{ item['category'] }} Sub-category: {{ item['sub_category'] }} </p>
+					</div>
+				</header>
+				<figure class="image is-square">
+					<img src="/static/images/{{ item['picture_url'] }}">
+				</figure>
+				<div>
+					<p>{{ item['description'] }}</p>
+					<p>Posted: {{ item['created'].strftime('%Y-%m-%d') }}</p>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+
+	</div>
+
+	<div class="columns is-multiline is-desktop">
+		<div class="column is-full is-centered has-text-centered">
+			<h1>Paraphernalia</h1>
+		</div>
+
+	{% for item in items %}
+		{% if item['category'] == 'paraphernalia' %}
+			<div class="column is-one-third">
+				<header>
+					<div>
+						<h1>{{ item['item_name'] }}</h1>
+						<p>Category: {{ item['category'] }} Sub-category: {{ item['sub_category'] }} </p>
+					</div>
+				</header>
+				<figure class="image is-square">
+					<img src="/static/images/{{ item['picture_url'] }}">
+				</figure>
+				<div>
+					<p>{{ item['description'] }}</p>
+					<p>Posted: {{ item['created'].strftime('%Y-%m-%d') }}</p>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+	<!-- End of picture gallery -->
+
+	<!-- Contact form -->
+	<div class="contact-us-form-container columns">
+		<div class="column is-full is-centered has-text-centered">
+			<h1>Contact us for pricing</h1>
+
+			<form class="control" method="post" enctype="multipart/form-data">
+			 
+				<div class="field">
+				  <label class="label" for="visitor_name">Name</label>
+				  <div class="control">
+				    <input class="input" type="text" placeholder="Your name here" id="visitor_name" name="visitor_name">
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label" for="visitor_email">Email</label>
+				  <div class="control has-icons-left has-icons-right">
+				    <input class="input" type="email" placeholder="your-email-here@provider.com" id="visitor_email" name="visitor_email">
+				    <span class="icon is-small is-left">
+				      <i class="fas fa-envelope"></i>
+				    </span>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label" for="visitor_subject">Subject</label>
+				  <div class="control">
+				    <div class="select">
+				      <select id="visitor_subject" name="visitor_subject">
+				        <option>Individual pricing</option>
+				        <option>Bulk pricing</option>
+				        <option>Custom order</option>
+				      </select>
+				    </div>
+				  </div>
+				</div>
+
+				<div class="field">
+				  <label class="label" for="visitor_message">Message</label>
+				  <div class="control">
+				    <textarea class="textarea" placeholder="Enter message here" id="visitor_message" name="visitor_message"></textarea>
+				  </div>
+				</div>
+
+				<div class="field is-grouped">
+				  <div class="control">
+				    <button class="button is-link" type="submit">Submit</button>
+				  </div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<!-- End form -->
+
+	<!-- For reference, delete in post
+	<div class="columns is-mobile is-centered">
+	{% for item in items %}
+		<div class="column is-half">
+			<header>
+				<div>
+					<h1>{{ item['item_name'] }}</h1>
+					<p>Category: {{ item['category'] }} Sub-category: {{ item['sub_category'] }} </p>
+				</div>
+			</header>
+			<figure class="image is-square">
+				<img src="/static/images/{{ item['picture_url'] }}">
+			</figure>
+			<div>
+				<p>{{ item['description'] }}</p>
+				<p>Posted: {{ item['created'].strftime('%Y-%m-%d') }}</p>
+			</div>
+		</div>
+		{% if not loop.last %}
+			<hr>
+		{% endif %}
+	{% endfor %}
+	</div>
+	-->
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'baseAdmin.html' %}
+
+{% block header %}
+	<div class="content">
+		<h1>{% block title %}Edit Subcategory{% endblock %}</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<form method="post">
+		<label for="category_id">[Category: _______, Subcategory: ________ ] to Edit</label>
+		<select name="category_id" id="category_id">
+			{% for category in categories %}
+			<option value="{{ category['id'] }}">Category: {{ category['category'] }}, Subcategory: {{ category['sub_category'] }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<label for="sub_category">New Subcategory Name</label>
+		<input type="text" id="sub_category" name="sub_category">
+		<input type="submit" name="Save">
+	</form>
+{% endblock %}
